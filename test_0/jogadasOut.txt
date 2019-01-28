@@ -1,0 +1,101 @@
+Digite o nome do jogador:
+Digitado (Geronimo Facil Vencedor)
+    000 001 002 003 004 
+000 ... ... ... ... ... 
+001 ... ... ... ... ... 
+002 ... ... ... ... ... 
+003 ... ... ... ... ... 
+004 ... ... ... ... ... 
+Geronimo Facil Vencedor Jogada: 1
+Digite a posicao (x e y):
+Digitado (4,4)
+    000 001 002 003 004 
+000 ... ... ... ... ... 
+001 ... ... ... ... ... 
+002 ... ... ... ... ... 
+003 ... ...  2   2   1  
+004 ... ...  1          
+Geronimo Facil Vencedor Jogada: 2
+Digite a posicao (x e y):
+Digitado (0,4)
+    000 001 002 003 004 
+000 ... ... ... ... ... 
+001 ... ... ... ... ... 
+002 ... ... ... ... ... 
+003 ... ...  2   2   1  
+004  1  ...  1          
+Geronimo Facil Vencedor Jogada: 3
+Digite a posicao (x e y):
+Digitado (3,2)
+    000 001 002 003 004 
+000 ... ... ... ... ... 
+001 ... ... ... ... ... 
+002 ... ... ...  2  ... 
+003 ... ...  2   2   1  
+004  1  ...  1          
+Geronimo Facil Vencedor Jogada: 4
+Digite a posicao (x e y):
+Digitado (4,0)
+    000 001 002 003 004 
+000 ... ...  1          
+001 ... ...  2   2   1  
+002 ... ... ...  2  ... 
+003 ... ...  2   2   1  
+004  1  ...  1          
+Geronimo Facil Vencedor Jogada: 5
+Digite a posicao (x e y):
+Digitado (0,3)
+    000 001 002 003 004 
+000 ... ...  1          
+001 ... ...  2   2   1  
+002 ... ... ...  2  ... 
+003  1  ...  2   2   1  
+004  1  ...  1          
+Geronimo Facil Vencedor Jogada: 6
+Digite a posicao (x e y):
+Digitado (0,2)
+    000 001 002 003 004 
+000 ... ...  1          
+001 ... ...  2   2   1  
+002  1  ... ...  2  ... 
+003  1  ...  2   2   1  
+004  1  ...  1          
+Geronimo Facil Vencedor Jogada: 7
+Digite a posicao (x e y):
+Digitado (0,1)
+    000 001 002 003 004 
+000 ... ...  1          
+001  2  ...  2   2   1  
+002  1  ... ...  2  ... 
+003  1  ...  2   2   1  
+004  1  ...  1          
+Geronimo Facil Vencedor Jogada: 8
+Digite a posicao (x e y):
+Digitado (1,0)
+    000 001 002 003 004 
+000 ...  2   1          
+001  2  ...  2   2   1  
+002  1  ... ...  2  ... 
+003  1  ...  2   2   1  
+004  1  ...  1          
+Geronimo Facil Vencedor Jogada: 9
+Digite a posicao (x e y):
+Digitado (1,2)
+    000 001 002 003 004 
+000 ...  2   1          
+001  2  ...  2   2   1  
+002  1   2  ...  2  ... 
+003  1  ...  2   2   1  
+004  1  ...  1          
+Geronimo Facil Vencedor Jogada: 10
+Digite a posicao (x e y):
+Digitado (1,3)
+    000 001 002 003 004 
+000 ...  2   1          
+001  2  ...  2   2   1  
+002  1   2  ...  2  ... 
+003  1   2   2   2   1  
+004  1  ...  1          
+Geronimo Facil Vencedor Venceu!
+Jogar novamente? (s,n)
+Digitado (n)
