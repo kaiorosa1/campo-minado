@@ -4,13 +4,13 @@ int main(int argc, char* argv[]){
     
     char nomeJogador[1000];
     
-    // Verificar Parementros
+    // Verificar Parametros
     if(argc != 2){
         printf("ERRO: O diretorio de arquivos de configuração nao foi informado!\n");
         return 1;
     }
     // Inicializar o jogo
-    // ler arquivo tabuleiro.txt
+    //  abrir arquivo tabuleiro.txt
     FILE * filePointer = fopen(argv[1],"r");
     
     // verificar se foi possivel ler o arquivo
@@ -24,17 +24,34 @@ int main(int argc, char* argv[]){
     scanf("%s",nomeJogador);
     // Mostrar nome digitado
     printf("Digitado (%s)\n",nomeJogador);
-    //imprimir Estado inicial do tabuleiro 
     
     //Lendo cada linha do arquivo
     
     // primeira linha do arquivo 3 characters;
     //fechadas - abertas bomba - aberta vazia
-      
+    int tableSize=0;
+    char fechada = fgetc(filePointer);
+    char bomba = fgetc(filePointer);
+    char vazia = fgetc(filePointer);
+    
+    
     // segunda linha numero de linhas e de columas do tabuleiro
+    fscanf(filePointer,"%d %d",&tableSize,&tableSize);
+    
+    //PRINTING TESTS
+    printf("Fechada : %c\n",fechada);
+    printf("Bomba : %c\n",bomba);
+    printf("Vazia: %c\n",vazia);
+    printf("Table Size: %d\n",tableSize);
     
     // proximas linhas 1 bomba e 0 vazia
+
+
+    //imprimir Estado inicial do tabuleiro 
     
+    
+    
+    //fechar o arquivo
     fclose(filePointer);
     return 0;
 }
