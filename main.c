@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include "tGame.h"
 
 int main(int argc, char* argv[]){
     
@@ -44,8 +46,10 @@ int main(int argc, char* argv[]){
     printf("Vazia: %c\n",vazia);
     printf("Table Size: %d\n",tableSize);
     
+    // teste tGame
+    tGame* gameTeste = inicia_tGame(1,bomba);
     // proximas linhas 1 bomba e 0 vazia
-
+    printPosition(gameTeste);
 
     //imprimir Estado inicial do tabuleiro 
     
