@@ -8,6 +8,9 @@ typedef struct tgame tGame;
 // inicia a posicao com o estado e o conteudo
 tGame* inicia_tGame(int s,int c);
 
+// aloca memoria para o tabuleiro
+tGame** inicia_tabuleiro(int sz);
+
 // prints a specific position
 void printPosition(tGame* g);
 

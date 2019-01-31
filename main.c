@@ -46,15 +46,17 @@ int main(int argc, char* argv[]){
     printf("Vazia: %c\n",vazia);
     printf("Table Size: %d\n",tableSize);
     
-    tGame game[tableSize][tableSize]; // not working yet 
+    //inicializa tabuleiro
+    tGame** game = inicia_tabuleiro(tableSize);
+    
     int i=0,j=0;
     do
     { 
         // lendo cada caractere 
         char c = fgetc(filePointer); 
         if(c == '1'){
-            game[i][j].state =0;
-            game[i][j].content = bomba;
+            //game[i][j].state =0;
+            //game[i][j].content = bomba;
         }
         
         // sai do loop quando eh o fim do arquivo

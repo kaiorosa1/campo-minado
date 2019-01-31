@@ -26,3 +26,11 @@ void printPosition(tGame* g){
     printf("Estado: %d\n",g->state);
     printf("Conteudo: %c\n",g->content);
 }
+
+tGame** inicia_tabuleiro(int sz){
+    
+   tGame **tabuleiro = (tGame**) malloc(sz*sizeof(tGame*));
+   // alocar espaco para of ponteiros itself
+   
+    return tabuleiro;
+}
