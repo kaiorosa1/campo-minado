@@ -38,7 +38,7 @@ int main(int argc, char* argv[]){
     
     
     // segunda linha numero de linhas e de columas do tabuleiro
-    fscanf(filePointer,"%d %d",&tableSize,&tableSize);
+    fscanf(filePointer,"%d %d\n",&tableSize,&tableSize);
     
     //PRINTING TESTS
     printf("Fechada : %c\n",fechada);
@@ -46,10 +46,28 @@ int main(int argc, char* argv[]){
     printf("Vazia: %c\n",vazia);
     printf("Table Size: %d\n",tableSize);
     
+    tGame game[tableSize][tableSize]; // not working yet 
+    int i=0,j=0;
+    do
+    { 
+        // lendo cada caractere 
+        char c = fgetc(filePointer); 
+        if(c == '1'){
+            game[i][j].state =0;
+            game[i][j].content = bomba;
+        }
+        
+        // sai do loop quando eh o fim do arquivo
+        if (feof(filePointer)) 
+            break ; 
+  
+        printf("%c", c); 
+    }  while(1);
+    
     // teste tGame
-    tGame* gameTeste = inicia_tGame(1,bomba);
+    //tGame* gameTeste = inicia_tGame(1,bomba);
     // proximas linhas 1 bomba e 0 vazia
-    printPosition(gameTeste);
+    //printPosition(gameTeste);
 
     //imprimir Estado inicial do tabuleiro 
     
