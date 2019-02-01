@@ -55,24 +55,29 @@ int main(int argc, char* argv[]){
         // lendo cada caractere 
         char c = fgetc(filePointer); 
         if(c == '1'){
+            printf("%d %d\n", i, j); 
             inicia_position(game,i,j,0,bomba);
             j++;
             //game[i][j].state =0;
             //game[i][j].content = bomba;
-        }else if(c=='\n'){
-            i++;
-            j=0;
-        }else{
+        }else if(c == '0'){
+            printf("%d %d\n", i, j); 
             inicia_position(game,i,j,0,vazia);
             j++;
+        }else{
+            i++;
+            j=0;
         }
         
         // sai do loop quando eh o fim do arquivo
         if (feof(filePointer)) 
             break ; 
   
-        printf("%c", c); 
+        
     }  while(1);
+    
+    // print the entire table
+    print_tabuleiro(game,tableSize);
     
     // teste tGame
     //tGame* gameTeste = inicia_tGame(1,bomba);

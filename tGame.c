@@ -13,7 +13,7 @@ int inicia_position(tGame** g,int i,int j,int s,int c){
     // // aloca espaco para a tabela e inicia os valores recebidos
     // tGame* position = (tGame*) malloc(sizeof(tGame));
     g[i][j].state = s;
-    g[i][j].state = s;
+    g[i][j].content = c;
     // position->state = s;
     // position->content = c;
     
@@ -40,4 +40,15 @@ tGame** inicia_tabuleiro(int sz){
        tabuleiro[aux] = (*tabuleiro + aux);
    }
     return tabuleiro;
+}
+
+void print_tabuleiro(tGame** g, int sz){
+    int i,j;
+    for(i=0;  i < sz; i++){
+        for(j=0; j < sz; j++){
+            printf("%c ",g[i][j].content);
+        }
+        printf("\n");
+    }
+    printf("\n");
 }
