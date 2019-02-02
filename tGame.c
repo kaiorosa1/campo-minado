@@ -12,7 +12,7 @@ void inicia_position(tGame** g,int i,int j,int s,int c){
     // it will possibly have a verification step here in the future
     g[i][j].state = s;
     g[i][j].content = c;
-
+    
 }
 
 
@@ -39,10 +39,10 @@ tGame** inicia_tabuleiro(int sz){
 
 void print_tabuleiro(tGame** g, int sz,int csd){
     // the problem is the way I'm printing them
-    int i,j;
+    int i=0,j=0;
     for(i=0;  i < sz; i++){
         for(j=0; j < sz; j++){
-            printf("%c ",g[i][j].content);
+            printf("%c",g[i][j].content);
         }
         printf("\n");
     }

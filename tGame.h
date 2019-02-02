@@ -15,7 +15,7 @@ tGame** inicia_tabuleiro(int sz);
 void printPosition(tGame* g);
 
 // print the entire table
-void print_tabuleiro(tGame** g, int sz,int int csd);
+void print_tabuleiro(tGame** g, int sz,int csd);
 
 // desaloca memoria alocada de uma tGame
 void freePosition(tGame* g);

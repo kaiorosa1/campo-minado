@@ -76,7 +76,7 @@ int main(int argc, char* argv[]){
     }  while(1);
     
     // print the entire table
-    print_tabuleiro(game,tableSize);
+    print_tabuleiro(game,tableSize,fechada);
     
 
     //imprimir Estado inicial do tabuleiro 
