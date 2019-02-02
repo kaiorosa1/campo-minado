@@ -8,16 +8,11 @@ struct tgame{
 };
 
 
-int inicia_position(tGame** g,int i,int j,int s,int c){
-    int valido=0; // returns 0 if successfully started the position
-    // // aloca espaco para a tabela e inicia os valores recebidos
-    // tGame* position = (tGame*) malloc(sizeof(tGame));
+void inicia_position(tGame** g,int i,int j,int s,int c){
+    // it will possibly have a verification step here in the future
     g[i][j].state = s;
     g[i][j].content = c;
-    // position->state = s;
-    // position->content = c;
-    
-    return valido;
+
 }
 
 
@@ -42,7 +37,8 @@ tGame** inicia_tabuleiro(int sz){
     return tabuleiro;
 }
 
-void print_tabuleiro(tGame** g, int sz){
+void print_tabuleiro(tGame** g, int sz,int csd){
+    // the problem is the way I'm printing them
     int i,j;
     for(i=0;  i < sz; i++){
         for(j=0; j < sz; j++){

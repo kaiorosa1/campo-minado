@@ -1,0 +1,74 @@
+Digite o nome do jogador:
+Digitado (Geronimo Facil Perdedor)
+    000 001 002 003 004 
+000 ... ... ... ... ... 
+001 ... ... ... ... ... 
+002 ... ... ... ... ... 
+003 ... ... ... ... ... 
+004 ... ... ... ... ... 
+Geronimo Facil Perdedor Jogada: 1
+Digite a posicao (x e y):
+Digitado (4,4)
+    000 001 002 003 004 
+000 ... ... ... ... ... 
+001 ... ... ... ... ... 
+002 ... ... ... ... ... 
+003 ... ...  2   2   1  
+004 ... ...  1          
+Geronimo Facil Perdedor Jogada: 2
+Digite a posicao (x e y):
+Digitado (0,4)
+    000 001 002 003 004 
+000 ... ... ... ... ... 
+001 ... ... ... ... ... 
+002 ... ... ... ... ... 
+003 ... ...  2   2   1  
+004  1  ...  1          
+Geronimo Facil Perdedor Jogada: 3
+Digite a posicao (x e y):
+Digitado (3,2)
+    000 001 002 003 004 
+000 ... ... ... ... ... 
+001 ... ... ... ... ... 
+002 ... ... ...  2  ... 
+003 ... ...  2   2   1  
+004  1  ...  1          
+Geronimo Facil Perdedor Jogada: 4
+Digite a posicao (x e y):
+Digitado (4,0)
+    000 001 002 003 004 
+000 ... ...  1          
+001 ... ...  2   2   1  
+002 ... ... ...  2  ... 
+003 ... ...  2   2   1  
+004  1  ...  1          
+Geronimo Facil Perdedor Jogada: 5
+Digite a posicao (x e y):
+Digitado (0,3)
+    000 001 002 003 004 
+000 ... ...  1          
+001 ... ...  2   2   1  
+002 ... ... ...  2  ... 
+003  1  ...  2   2   1  
+004  1  ...  1          
+Geronimo Facil Perdedor Jogada: 6
+Digite a posicao (x e y):
+Digitado (0,2)
+    000 001 002 003 004 
+000 ... ...  1          
+001 ... ...  2   2   1  
+002  1  ... ...  2  ... 
+003  1  ...  2   2   1  
+004  1  ...  1          
+Geronimo Facil Perdedor Jogada: 7
+Digite a posicao (x e y):
+Digitado (0,0)
+    000 001 002 003 004 
+000  O  ...  1          
+001 ... ...  2   2   1  
+002  1  ... ...  2  ... 
+003  1  ...  2   2   1  
+004  1  ...  1          
+Geronimo Facil Perdedor Perdeu!
+Jogar novamente? (s,n)
+Digitado (n)

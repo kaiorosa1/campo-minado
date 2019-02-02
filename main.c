@@ -58,10 +58,9 @@ int main(int argc, char* argv[]){
             printf("%d %d\n", i, j); 
             inicia_position(game,i,j,0,bomba);
             j++;
-            //game[i][j].state =0;
-            //game[i][j].content = bomba;
+            
         }else if(c == '0'){
-            printf("%d %d\n", i, j); 
+            //printf("%d %d\n", i, j); 
             inicia_position(game,i,j,0,vazia);
             j++;
         }else{
@@ -79,10 +78,6 @@ int main(int argc, char* argv[]){
     // print the entire table
     print_tabuleiro(game,tableSize);
     
-    // teste tGame
-    //tGame* gameTeste = inicia_tGame(1,bomba);
-    // proximas linhas 1 bomba e 0 vazia
-    //printPosition(gameTeste);
 
     //imprimir Estado inicial do tabuleiro 
     
