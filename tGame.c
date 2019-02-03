@@ -8,21 +8,26 @@ struct tgame{
 };
 
 
-void inicia_position(tGame** g,int i,int j,int s,int c){
+void  inicia_position(tGame** g,int i,int j,int s,int c){
     // it will possibly have a verification step here in the future
     g[i][j].state = s;
     g[i][j].content = c;
     
+    // printf("%c %d %d\n",c, i, j);
+    
 }
 
 
-void printPosition(tGame* g){
+void printPosition(tGame** g,int i, int j){
     if(g == NULL){
         printf("Invalid position\n");
         return;
     }
-    printf("Estado: %d\n",g->state);
-    printf("Conteudo: %c\n",g->content);
+    printf("\n");
+    printf("coordenadas: %d %d\n",i,j);
+    printf("Estado: %d\n",g[i][j].state);
+    printf("Conteudo: %c\n",g[i][j].content);
+    printf("\n");
 }
 
 tGame** inicia_tabuleiro(int sz){
@@ -38,13 +43,15 @@ tGame** inicia_tabuleiro(int sz){
 }
 
 void print_tabuleiro(tGame** g, int sz,int csd){
-    // the problem is the way I'm printing them
+
     int i=0,j=0;
     for(i=0;  i < sz; i++){
         for(j=0; j < sz; j++){
-            printf("%c",g[i][j].content);
+            printf("|%c|",g[i][j].content);
         }
         printf("\n");
     }
     printf("\n");
+    printf("table sz: %d\n",sz);
+    printf("table fechado: %c\n",csd);
 }

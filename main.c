@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "tGame.h"
 
+void printTableChar(char **c, int tableSize);
+
 int main(int argc, char* argv[]){
     
     char nomeJogador[1000];
@@ -50,40 +52,58 @@ int main(int argc, char* argv[]){
     tGame** game = inicia_tabuleiro(tableSize);
     
     int i=0,j=0;
+    // copiar em uma tabela as posicoes depois verifcar e trocar
+    char**copyTable = (char**) malloc(tableSize*sizeof(char*));
+    // alocar espaco para of ponteiros itself
+    copyTable[0] = (char*) malloc(tableSize*sizeof(char));
+    int aux=0;
+    for(aux=0; aux < tableSize; aux++){
+       copyTable[aux] = (*copyTable + aux);
+    }
+    
+    // I FINALLY DISCOVER THE PROBLEM IT'S IN THE TWO DIMENSION ARRAYYY
     do
     { 
         // lendo cada caractere 
         char c = fgetc(filePointer); 
-        if(c == '1'){
-            printf("%d %d\n", i, j); 
-            inicia_position(game,i,j,0,bomba);
-            j++;
-            
-        }else if(c == '0'){
-            //printf("%d %d\n", i, j); 
-            inicia_position(game,i,j,0,vazia);
+        if(c != '\n'){
+            copyTable[i][j] = c;
             j++;
         }else{
-            i++;
             j=0;
+            i++;
         }
-        
+         
         // sai do loop quando eh o fim do arquivo
-        if (feof(filePointer)) 
-            break ; 
+        if (feof(filePointer)) {
+            break;
+        }
+            
   
         
     }  while(1);
-    
+    printf("\n");
+    // print copied table
+    printTableChar(copyTable,tableSize);
     // print the entire table
-    print_tabuleiro(game,tableSize,fechada);
+    //print_tabuleiro(game,tableSize,fechada);
     
-
-    //imprimir Estado inicial do tabuleiro 
+    // //imprimir Estado inicial do tabuleiro 
     
     
     
     //fechar o arquivo
     fclose(filePointer);
     return 0;
+}
+
+void printTableChar(char **c, int tableSize){
+    int k=0,m=0;
+    for(k=0;  k < tableSize; k++){
+        for(m=0; m < tableSize; m++){
+            printf("|%c|",c[k][m]);
+        }
+        printf("\n");
+    }
+    
 }

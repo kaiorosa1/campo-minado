@@ -12,7 +12,7 @@ void inicia_position(tGame** g,int i,int j,int s,int c);
 tGame** inicia_tabuleiro(int sz);
 
 // prints a specific position
-void printPosition(tGame* g);
+void printPosition(tGame** g,int i, int j);
 
 // print the entire table
 void print_tabuleiro(tGame** g, int sz,int csd);
