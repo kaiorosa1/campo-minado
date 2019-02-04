@@ -22,6 +22,9 @@ void receberJogada();
 // calcula as bombas e adiciona no tabuleiro
 void calcularBombas(tGame** g,int sz, char bomba);
 
+// conta as bombas em uma dada posicao
+int conta_bomba_position(tGame **g,int i,int j,int sz,char bomba);
+
 // desaloca memoria alocada de uma tGame
 void freePosition(tGame* g);
 

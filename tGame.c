@@ -68,6 +68,48 @@ void calcularBombas(tGame** g,int sz,char bomba){
     for(i=0;  i < sz; i++){
         for(j=0; j < sz; j++){
            // verificar bomba em cada posicao 
+           nBombas = conta_bomba_position(g,i,j,sz,bomba);
+           printf("%d %d - N de Bombas: %d\n",i,j,nBombas);
         }
     }
+    
+}
+
+int conta_bomba_position(tGame **g,int i,int j, int sz, char bomba){
+    int up = i - 1;
+    int down= i + 1;
+    int front = j + 1;
+    int back = j - 1;
+    int upLeft = i - 2;
+    int upRight = i + 2;
+    int downLeft = j - 2;
+    int downRight = j + 2;
+    // conta bomba
+    int conta = 0;
+    
+    if(up >= 0 && up < sz && g[up][j].content == bomba){
+        conta++;
+    }
+    if(down >= 0 && down < sz && g[down][j].content == bomba){
+        conta++;
+    }
+    if(front >= 0 && front < sz && g[i][front].content == bomba){
+        conta++;
+    }
+    if(back >= 0 && back < sz && g[i][back].content == bomba){
+        conta++;
+    }
+    if(back >= 0 && back < sz && upLeft >=0 && upLeft < sz && g[upLeft][back].content == bomba){
+        conta++;
+    }
+    if(upRight >= 0 && upRight < sz && front >=0 && front < sz && g[upRight][front].content == bomba){
+        conta++;
+    }
+    if(downLeft >= 0 && downLeft < sz && back >=0 && back < sz && g[downLeft][back].content == bomba){
+        conta++;
+    }
+    if(downRight >= 0 && downRight < sz && front >=0 && front < sz && g[downRight][front].content == bomba){
+        conta++;
+    }
+    return conta;
 }
