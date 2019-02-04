@@ -24,7 +24,7 @@ int main(int argc, char* argv[]){
     
     // Pedir nome do usuario 
     printf("Digite o nome do jogador:\n");
-    scanf("%s",nomeJogador);
+    scanf("%[^\n]s",nomeJogador);
     // Mostrar nome digitado
     printf("Digitado (%s)\n",nomeJogador);
     
@@ -79,9 +79,10 @@ int main(int argc, char* argv[]){
     
     // Pedir Jogada do Usuario
     // Analisar jogada
-    receberJogada(game, tableSize);
+    realizarJogada(game, nomeJogador,tableSize);
     
     // Print back the table
+    print_tabuleiro(game,tableSize,fechada);
     
     //fechar o arquivo
     fclose(filePointer);

@@ -21,7 +21,7 @@ void print_tabuleiro(tGame** g, int sz,int csd);
 void calcularBombas(tGame** g,int sz, char bomba);
 
 // receber jogadas e verificar a validez
-void receberJogada(tGame** g,int sz);
+void realizarJogada(tGame** g,char p[1000],int sz);
 
 // conta as bombas em uma dada posicao
 void conta_bomba_position(tGame **g,int i,int j,int sz,char bomba);
