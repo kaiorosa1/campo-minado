@@ -13,7 +13,7 @@ void  inicia_position(tGame** g,int i,int j,int s,int c){
     g[i][j].state = s;
     g[i][j].content = c;
     
-    // printf("%c %d %d\n",c, i, j);
+   
     
 }
 
@@ -34,10 +34,9 @@ tGame** inicia_tabuleiro(int sz){
     
    tGame **tabuleiro = (tGame**) malloc(sz*sizeof(tGame*));
    // alocar espaco para of ponteiros itself
-   tabuleiro[0] = (tGame*) malloc(sz*sizeof(tGame));
    int aux=0;
    for(aux=0; aux < sz; aux++){
-       tabuleiro[aux] = (*tabuleiro + aux);
+        tabuleiro[aux] = (tGame*) malloc(sz*sizeof(tGame));
    }
     return tabuleiro;
 }
@@ -47,11 +46,9 @@ void print_tabuleiro(tGame** g, int sz,int csd){
     int i=0,j=0;
     for(i=0;  i < sz; i++){
         for(j=0; j < sz; j++){
-            printf("|%c|",g[i][j].content);
+            printf(" %c ",g[i][j].content);
         }
         printf("\n");
     }
-    printf("\n");
-    printf("table sz: %d\n",sz);
-    printf("table fechado: %c\n",csd);
+    
 }
