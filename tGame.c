@@ -46,7 +46,7 @@ void print_tabuleiro(tGame** g, int sz,int csd){
     int i=0,j=0;
     for(i=0;  i < sz; i++){
         for(j=0; j < sz; j++){
-            if(g[i][j].state == 0){
+            if(g[i][j].state == 1){
                 printf(" %c ",csd);
             }else{
                 printf(" %c ",g[i][j].content);
@@ -69,23 +69,21 @@ void calcularBombas(tGame** g,int sz,char bomba){
         for(j=0; j < sz; j++){
            // verificar bomba em cada posicao 
            nBombas = conta_bomba_position(g,i,j,sz,bomba);
-           printf("%d %d - N de Bombas: %d\n",i,j,nBombas);
+           printf("%d %d - N de Bombas: %c\n",i,j,nBombas);
         }
     }
     
 }
 
 int conta_bomba_position(tGame **g,int i,int j, int sz, char bomba){
+    // verify all the position before continuing
     int up = i - 1;
     int down= i + 1;
     int front = j + 1;
     int back = j - 1;
-    int upLeft = i - 2;
-    int upRight = i + 2;
-    int downLeft = j - 2;
-    int downRight = j + 2;
+    
     // conta bomba
-    int conta = 0;
+    char conta = '0';
     
     if(up >= 0 && up < sz && g[up][j].content == bomba){
         conta++;
@@ -99,17 +97,22 @@ int conta_bomba_position(tGame **g,int i,int j, int sz, char bomba){
     if(back >= 0 && back < sz && g[i][back].content == bomba){
         conta++;
     }
-    if(back >= 0 && back < sz && upLeft >=0 && upLeft < sz && g[upLeft][back].content == bomba){
+    if(back >= 0 && back < sz && up >=0 && up < sz && g[up][back].content == bomba){
         conta++;
     }
-    if(upRight >= 0 && upRight < sz && front >=0 && front < sz && g[upRight][front].content == bomba){
+    if(up >= 0 && up < sz && front >=0 && front < sz && g[up][front].content == bomba){
         conta++;
     }
-    if(downLeft >= 0 && downLeft < sz && back >=0 && back < sz && g[downLeft][back].content == bomba){
+    if(down >= 0 && down < sz && back >=0 && back < sz && g[down][back].content == bomba){
         conta++;
     }
-    if(downRight >= 0 && downRight < sz && front >=0 && front < sz && g[downRight][front].content == bomba){
+    if(down >= 0 && down < sz && front >=0 && front < sz && g[down][front].content == bomba){
         conta++;
     }
+    
+    if(g[i][j].content != bomba && conta != '0'){
+        g[i][j].content = conta;
+    }
+    
     return conta;
 }
