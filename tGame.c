@@ -115,24 +115,25 @@ void conta_bomba_position(tGame **g,int i,int j, int sz, char bomba){
 }
 
 
-void realizarJogada(tGame** g,char p[1000],int sz){
-    int x,y;
-    int nJogada=1;
-    printf("%s Jogada: %d\n",p,nJogada);
-    // recebe jogada
-    printf("Digite a posicao (x e y):\n");
-    scanf("%d %d",&x,&y);
+int realizarJogada(tGame** g,int x, int y, int sz, char bomba, int *jogada){
     
-    printf("Digitado(%d %d)\n",x,y);
-    
-    // verify validity
+    // verifica validade
     if(!((x >= 0 && x < sz) && (y >= 0 && y < sz))){
         printf("Posicao invalida (FORA DO TABULEIRO)\n");
-    }else if(g[x][y].state  == 1){
-        printf("Posicao invalida (JA ABERTA)!\n");
-    }else{
-        g[x][y].state  = 1;
-        // aumenta o numero de jogadas pois foi vaida
-        nJogada++;
+        return -1;
     }
+    else if(g[x][y].state  == 1){
+        printf("Posicao invalida (JA ABERTA)!\n");
+        return -1;
+    }
+    else{
+        g[x][y].state  = 1;
+        
+        if(g[x][y].content == bomba){
+            return -1;
+        }
+        // aumenta o numero de jogadas pois foi valida
+        (*jogada)++;
+    }
+    return 0;
 }

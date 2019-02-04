@@ -73,16 +73,34 @@ int main(int argc, char* argv[]){
     
     calcularBombas(game,tableSize,bomba);
     //imprimir Estado inicial do tabuleiro 
+    int sair = 0,x = 0,y = 0;
+    int nJogada=1;
     
-    // print the entire table
-    print_tabuleiro(game,tableSize,fechada);
+    do{
+        // print the entire table
+        print_tabuleiro(game,tableSize,fechada);
+        
+        printf("%s Jogada: %d\n",nomeJogador,nJogada);
+        // recebe jogada
+        printf("Digite a posicao (x e y):\n");
+        scanf("%d %d",&x,&y);
+        
+        printf("Digitado(%d %d)\n",x,y);
+        
+        // Pedir Jogada do Usuario
+        // Analisar jogada
+        sair = realizarJogada(game, x, y, tableSize, bomba, &nJogada);
+        
+        if(sair == -1){
+            print_tabuleiro(game,tableSize,fechada);
+            printf("%s Perdeu!\n",nomeJogador);
+            break;
+        }
+        
+    }
+    while(1);
     
-    // Pedir Jogada do Usuario
-    // Analisar jogada
-    realizarJogada(game, nomeJogador,tableSize);
     
-    // Print back the table
-    print_tabuleiro(game,tableSize,fechada);
     
     //fechar o arquivo
     fclose(filePointer);
