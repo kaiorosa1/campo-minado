@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "tGame.h"
 
-void printTableChar(char **c, int tableSize);
 
 int main(int argc, char* argv[]){
     
@@ -42,12 +41,6 @@ int main(int argc, char* argv[]){
     // segunda linha numero de linhas e de columas do tabuleiro
     fscanf(filePointer,"%d %d\n",&tableSize,&tableSize);
     
-    //PRINTING TESTS
-    printf("Fechada : %c\n",fechada);
-    printf("Bomba : %c\n",bomba);
-    printf("Vazia: %c\n",vazia);
-    printf("Table Size: %d\n",tableSize);
-    
     //inicializa tabuleiro
     tGame** game = inicia_tabuleiro(tableSize);
     
@@ -77,27 +70,17 @@ int main(int argc, char* argv[]){
   
         
     }  while(1);
-    printf("\n");
-  
+    
+    // calcular bombas e place them in the right place
+    //imprimir Estado inicial do tabuleiro 
+    
     // print the entire table
     print_tabuleiro(game,tableSize,fechada);
     
-    // //imprimir Estado inicial do tabuleiro 
-    
+    // Pedir Jogada do Usuario
     
     
     //fechar o arquivo
     fclose(filePointer);
     return 0;
-}
-
-void printTableChar(char **c, int tableSize){
-    int k=0,m=0;
-    for(k=0;  k < tableSize; k++){
-        for(m=0; m < tableSize; m++){
-            printf("|%c|",c[k][m]);
-        }
-        printf("\n");
-    }
-    
 }

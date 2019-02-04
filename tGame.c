@@ -42,13 +42,18 @@ tGame** inicia_tabuleiro(int sz){
 }
 
 void print_tabuleiro(tGame** g, int sz,int csd){
-
+    printf("\n");
     int i=0,j=0;
     for(i=0;  i < sz; i++){
         for(j=0; j < sz; j++){
-            printf(" %c ",g[i][j].content);
+            if(g[i][j].state == 0){
+                printf(" %c ",csd);
+            }else{
+                printf(" %c ",g[i][j].content);
+            }
+            
         }
         printf("\n");
     }
-    
+    printf("\n");
 }
