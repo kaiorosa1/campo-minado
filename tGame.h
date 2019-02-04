@@ -17,6 +17,11 @@ void printPosition(tGame** g,int i, int j);
 // print the entire table
 void print_tabuleiro(tGame** g, int sz,int csd);
 
+void receberJogada();
+
+// calcula as bombas e adiciona no tabuleiro
+void calcularBombas(tGame** g,int sz, char bomba);
+
 // desaloca memoria alocada de uma tGame
 void freePosition(tGame* g);
 

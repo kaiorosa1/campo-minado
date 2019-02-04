@@ -66,19 +66,22 @@ int main(int argc, char* argv[]){
         if (feof(filePointer)) {
             break;
         }
-            
-  
         
     }  while(1);
     
     // calcular bombas e place them in the right place
+    
+    calcularBombas(game,tableSize,bomba);
     //imprimir Estado inicial do tabuleiro 
     
     // print the entire table
     print_tabuleiro(game,tableSize,fechada);
     
     // Pedir Jogada do Usuario
+    // Analisar jogada
+    receberJogada();
     
+    // Print back the table
     
     //fechar o arquivo
     fclose(filePointer);

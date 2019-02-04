@@ -57,3 +57,17 @@ void print_tabuleiro(tGame** g, int sz,int csd){
     }
     printf("\n");
 }
+
+void receberJogada(){
+    
+}
+
+void calcularBombas(tGame** g,int sz,char bomba){
+    int nBombas = 0;
+    int i=0,j=0;
+    for(i=0;  i < sz; i++){
+        for(j=0; j < sz; j++){
+           // verificar bomba em cada posicao 
+        }
+    }
+}
