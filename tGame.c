@@ -46,7 +46,7 @@ void print_tabuleiro(tGame** g, int sz,int csd){
     int i=0,j=0;
     for(i=0;  i < sz; i++){
         for(j=0; j < sz; j++){
-            if(g[i][j].state == 1){
+            if(g[i][j].state == 0){
                 printf(" %c ",csd);
             }else{
                 printf(" %c ",g[i][j].content);
@@ -58,24 +58,20 @@ void print_tabuleiro(tGame** g, int sz,int csd){
     printf("\n");
 }
 
-void receberJogada(){
-    
-}
-
 void calcularBombas(tGame** g,int sz,char bomba){
-    int nBombas = 0;
+    // calcula o numero de bombas vizinhas percorrendo todo o tabuleiro
     int i=0,j=0;
     for(i=0;  i < sz; i++){
         for(j=0; j < sz; j++){
            // verificar bomba em cada posicao 
-           nBombas = conta_bomba_position(g,i,j,sz,bomba);
-           printf("%d %d - N de Bombas: %c\n",i,j,nBombas);
+           conta_bomba_position(g,i,j,sz,bomba);
+         
         }
     }
     
 }
 
-int conta_bomba_position(tGame **g,int i,int j, int sz, char bomba){
+void conta_bomba_position(tGame **g,int i,int j, int sz, char bomba){
     // verify all the position before continuing
     int up = i - 1;
     int down= i + 1;
@@ -85,6 +81,7 @@ int conta_bomba_position(tGame **g,int i,int j, int sz, char bomba){
     // conta bomba
     char conta = '0';
     
+    // verifica as posicoes para nao acessar indices invalidos
     if(up >= 0 && up < sz && g[up][j].content == bomba){
         conta++;
     }
@@ -110,9 +107,20 @@ int conta_bomba_position(tGame **g,int i,int j, int sz, char bomba){
         conta++;
     }
     
+    // so coloca no tabuleiro o numero de bombas vizinhas caso tenha bombas vizinhad e nao seja bomba
     if(g[i][j].content != bomba && conta != '0'){
         g[i][j].content = conta;
     }
     
-    return conta;
+}
+
+
+void receberJogada(tGame** g,int sz){
+    int x,y;
+    // recebe jogada
+    printf("Digite a posicao (x e y):\n");
+    scanf("%d %d",&x,&y);
+    
+    printf("Digitado(%d %d)\n",x,y);
+    // verify validity
 }

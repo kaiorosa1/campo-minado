@@ -79,7 +79,7 @@ int main(int argc, char* argv[]){
     
     // Pedir Jogada do Usuario
     // Analisar jogada
-    receberJogada();
+    receberJogada(game, tableSize);
     
     // Print back the table
     
