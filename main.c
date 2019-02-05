@@ -96,6 +96,9 @@ int main(int argc, char* argv[]){
             printf("%s Perdeu!\n",nomeJogador);
             break;
         }
+        if(sair == -2){
+            break;
+        }
         
     }
     while(1);

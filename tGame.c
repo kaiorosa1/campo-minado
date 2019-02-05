@@ -44,12 +44,24 @@ tGame** inicia_tabuleiro(int sz){
 void print_tabuleiro(tGame** g, int sz,int csd){
     printf("\n");
     int i=0,j=0;
+    int sideJ=0;
+    int sideI=0;
+    // I'll think of a better way to display the table
+    printf("    ");
+    for(sideI=0;sideI < sz ;sideI++){
+        printf("%.3d ",sideI);
+    }
+    printf("\n");
     for(i=0;  i < sz; i++){
         for(j=0; j < sz; j++){
+            if(j == 0){
+                printf("%.3d",sideJ);
+                sideJ++;
+            }
             if(g[i][j].state == 0){
-                printf(" %c ",csd);
+                printf("  %c ",csd);
             }else{
-                printf(" %c ",g[i][j].content);
+                printf("  %c ",g[i][j].content);
             }
             
         }
@@ -120,15 +132,15 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba, int *jogada){
     // verifica validade
     if(!((x >= 0 && x < sz) && (y >= 0 && y < sz))){
         printf("Posicao invalida (FORA DO TABULEIRO)\n");
-        return -1;
+        return -2;
     }
     else if(g[x][y].state  == 1){
         printf("Posicao invalida (JA ABERTA)!\n");
-        return -1;
+        return -2;
     }
     else{
         g[x][y].state  = 1;
-        
+        // IMPLEMENTAR FLOODFILL ALGORITHM
         if(g[x][y].content == bomba){
             return -1;
         }
