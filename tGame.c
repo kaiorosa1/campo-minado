@@ -49,7 +49,7 @@ void print_tabuleiro(tGame** g, int sz,int csd){
     // I'll think of a better way to display the table
     printf("    ");
     for(sideI=0;sideI < sz ;sideI++){
-        printf("%.3d ",sideI);
+        printf("%.3d  ",sideI);
     }
     printf("\n");
     for(i=0;  i < sz; i++){
@@ -59,7 +59,7 @@ void print_tabuleiro(tGame** g, int sz,int csd){
                 sideJ++;
             }
             if(g[i][j].state == 0){
-                printf("  %c ",csd);
+                printf(" %c%c%c ",csd,csd,csd);
             }else{
                 printf("  %c ",g[i][j].content);
             }
