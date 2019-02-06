@@ -21,7 +21,10 @@ void print_tabuleiro(tGame** g, int sz,int csd);
 void calcularBombas(tGame** g,int sz, char bomba);
 
 // receber jogadas e verificar a validez
-int realizarJogada(tGame** g,int x, int y,int sz,char bomba, int * jogada);
+int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *jogada);
+
+// implementa o algoritmo flood fill para abrir as posicoes vazias
+void floodFillVazias(tGame** g, int x, int y);
 
 // conta as bombas em uma dada posicao
 void conta_bomba_position(tGame **g,int i,int j,int sz,char bomba);

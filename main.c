@@ -89,16 +89,15 @@ int main(int argc, char* argv[]){
         
         // Pedir Jogada do Usuario
         // Analisar jogada
-        sair = realizarJogada(game, x, y, tableSize, bomba, &nJogada);
+        sair = realizarJogada(game, x, y, tableSize, bomba, vazia, &nJogada);
         
         if(sair == -1){
             print_tabuleiro(game,tableSize,fechada);
             printf("%s Perdeu!\n",nomeJogador);
+            // as the user if they want to continue playing before ending the game
             break;
         }
-        if(sair == -2){
-            break;
-        }
+        
         
     }
     while(1);

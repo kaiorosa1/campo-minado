@@ -61,7 +61,7 @@ void print_tabuleiro(tGame** g, int sz,int csd){
             if(g[i][j].state == 0){
                 printf(" %c%c%c ",csd,csd,csd);
             }else{
-                printf("  %c ",g[i][j].content);
+                printf("  %c  ",g[i][j].content);
             }
             
         }
@@ -127,7 +127,7 @@ void conta_bomba_position(tGame **g,int i,int j, int sz, char bomba){
 }
 
 
-int realizarJogada(tGame** g,int x, int y, int sz, char bomba, int *jogada){
+int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *jogada){
     
     // verifica validade
     if(!((x >= 0 && x < sz) && (y >= 0 && y < sz))){
@@ -140,7 +140,10 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba, int *jogada){
     }
     else{
         g[x][y].state  = 1;
-        // IMPLEMENTAR FLOODFILL ALGORITHM
+        if(g[x][y].content == vazia){
+            
+            floodFillVazias(g,x,y);
+        }
         if(g[x][y].content == bomba){
             return -1;
         }
@@ -148,4 +151,9 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba, int *jogada){
         (*jogada)++;
     }
     return 0;
+}
+
+void floodFillVazias(tGame** g, int x, int y){
+    
+
 }
