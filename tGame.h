@@ -24,7 +24,7 @@ void calcularBombas(tGame** g,int sz, char bomba);
 int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *jogada);
 
 // implementa o algoritmo flood fill para abrir as posicoes vazias
-void floodFillVazias(tGame** g, int x, int y);
+void floodFillVazias(tGame** g, int sz, char vazia, int x, int y);
 
 // conta as bombas em uma dada posicao
 void conta_bomba_position(tGame **g,int i,int j,int sz,char bomba);
