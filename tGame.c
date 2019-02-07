@@ -139,37 +139,44 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *j
         return -2;
     }
     else{
-        g[x][y].state  = 1;
+        //g[x][y].state  = 1;
         if(g[x][y].content == vazia){
-            
-            floodFillVazias(g, sz, vazia, x, y);
+            floodFillVazias(g, sz,bomba, vazia, x, y);
         }
         if(g[x][y].content == bomba){
             return -1;
         }
+        
         // aumenta o numero de jogadas pois foi valida
         (*jogada)++;
     }
     return 0;
 }
 
-void floodFillVazias(tGame** g,  int sz, char vazia, int x, int y){
-    int up = x - 1;
-    int down= x + 1;
-    int front = y + 1;
-    int back = y - 1;
-    // Need to work on here 
-    if(g[x][y].content == vazia && (x >= 0 && x < sz ) &&  (y >= 0 && y < sz ) && g[x][y].state != 1){
-        g[x][y].state  = 1;
-        floodFillVazias(g, sz, vazia, up, y);
-        floodFillVazias(g, sz, vazia, down, y);
-        floodFillVazias(g, sz, vazia, x, front);
-        floodFillVazias(g, sz, vazia, x, back);
-        floodFillVazias(g, sz, vazia, up, front);
-        floodFillVazias(g, sz, vazia, up, back);
-        floodFillVazias(g, sz, vazia, down, front);
-        floodFillVazias(g, sz, vazia, down, back);
-        
+void floodFillVazias(tGame** g,  int sz, char bomba, char vazia, int x, int y){
+    if(g[x][y].content == bomba){
+        return;
     }
+    if(x >= sz || y >= sz){
+        return;
+    }
+    if(x < 0 || y < 0){
+        return;
+    }
+    if(g[x][y].state == 1){
+        return;
+    }
+    if(g[x][y].content == vazia) {
+       g[x][y].state = 1;
+    }
+    
+    floodFillVazias(g, sz, bomba, vazia, x - 1, y - 1);
+    floodFillVazias(g, sz, bomba, vazia, x - 1, y);
+    floodFillVazias(g, sz, bomba, vazia, x - 1, y + 1);
+    floodFillVazias(g, sz, bomba, vazia, x, y - 1);
+    floodFillVazias(g, sz, bomba, vazia, x, y + 1);
+    floodFillVazias(g, sz, bomba, vazia, x + 1, y - 1);
+    floodFillVazias(g, sz, bomba, vazia, x + 1, y);
+    floodFillVazias(g, sz, bomba, vazia, x + 1, y + 1);
     
 }
