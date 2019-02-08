@@ -139,12 +139,14 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *j
         return -2;
     }
     else{
-        //g[x][y].state  = 1;
         if(g[x][y].content == vazia){
             floodFillVazias(g, sz,bomba, vazia, x, y);
         }
         if(g[x][y].content == bomba){
+            g[x][y].state  = 1;
             return -1;
+        }else{
+            g[x][y].state  = 1;
         }
         
         // aumenta o numero de jogadas pois foi valida
@@ -166,6 +168,7 @@ void floodFillVazias(tGame** g,  int sz, char bomba, char vazia, int x, int y){
     if(g[x][y].content != vazia){
         return;
     }
+    
     g[x][y].state = 1;
     
     floodFillVazias(g, sz, bomba, vazia, x + 1, y);
