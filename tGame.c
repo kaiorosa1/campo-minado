@@ -154,29 +154,23 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *j
 }
 
 void floodFillVazias(tGame** g,  int sz, char bomba, char vazia, int x, int y){
-    if(g[x][y].content == bomba){
-        return;
-    }
     if(x >= sz || y >= sz){
         return;
     }
     if(x < 0 || y < 0){
-        return;
+        return ;
     }
     if(g[x][y].state == 1){
         return;
     }
-    if(g[x][y].content == vazia) {
-       g[x][y].state = 1;
+    if(g[x][y].content != vazia){
+        return;
     }
+    g[x][y].state = 1;
     
-    floodFillVazias(g, sz, bomba, vazia, x - 1, y - 1);
-    floodFillVazias(g, sz, bomba, vazia, x - 1, y);
-    floodFillVazias(g, sz, bomba, vazia, x - 1, y + 1);
-    floodFillVazias(g, sz, bomba, vazia, x, y - 1);
-    floodFillVazias(g, sz, bomba, vazia, x, y + 1);
-    floodFillVazias(g, sz, bomba, vazia, x + 1, y - 1);
     floodFillVazias(g, sz, bomba, vazia, x + 1, y);
-    floodFillVazias(g, sz, bomba, vazia, x + 1, y + 1);
+    floodFillVazias(g, sz, bomba, vazia, x - 1, y);
+    floodFillVazias(g, sz, bomba, vazia, x, y + 1);
+    floodFillVazias(g, sz, bomba, vazia, x, y - 1);
     
 }
