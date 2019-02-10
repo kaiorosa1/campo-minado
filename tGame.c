@@ -177,3 +177,16 @@ void floodFillVazias(tGame** g,  int sz, char bomba, char vazia, int x, int y){
     floodFillVazias(g, sz, bomba, vazia, x, y - 1);
     
 }
+
+void restartGame(tGame** g, int sz, int* nJogada){
+    int i,j;
+    *nJogada = 1;
+    for(i=0;  i < sz; i++){
+        for(j=0; j < sz; j++){
+            if(g[i][j].state == 1){
+               g[i][j].state = 0;
+            }
+        }
+    }
+   
+}

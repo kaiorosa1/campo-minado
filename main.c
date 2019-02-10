@@ -102,6 +102,7 @@ int main(int argc, char* argv[]){
         }
         if(sair== - 4){
             // limpar jogo para reiniciar
+            restartGame(game,tableSize,&nJogada);
         }
         
     }
@@ -117,7 +118,7 @@ int main(int argc, char* argv[]){
 int askUser(){
     int cod =0;
     char answer;
-    printf("Quer jogar novamente?(y or n)\n");
+    printf("Deseja jogar novamente?(y or n)\n");
     scanf(" %c",&answer);
     
     if(answer == 'n' || answer == 'N'){

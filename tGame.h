@@ -29,6 +29,9 @@ void floodFillVazias(tGame** g, int sz, char bomba, char vazia, int x, int y);
 // conta as bombas em uma dada posicao
 void conta_bomba_position(tGame **g,int i,int j,int sz,char bomba);
 
+// reinicia o jogo para o estado inicial
+void restartGame(tGame** g, int sz, int* nJogada);
+
 // desaloca memoria alocada de uma tGame
 void freePosition(tGame* g);
 
