@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "tGame.h"
 
-
+int askUser();
 int main(int argc, char* argv[]){
     
     char nomeJogador[1000];
@@ -95,9 +95,14 @@ int main(int argc, char* argv[]){
             print_tabuleiro(game,tableSize,fechada);
             printf("%s Perdeu!\n",nomeJogador);
             // as the user if they want to continue playing before ending the game
+            sair = askUser();
+        }
+        if(sair == -3){
             break;
         }
-        
+        if(sair== - 4){
+            // limpar jogo para reiniciar
+        }
         
     }
     while(1);
@@ -107,4 +112,20 @@ int main(int argc, char* argv[]){
     //fechar o arquivo
     fclose(filePointer);
     return 0;
+}
+
+int askUser(){
+    int cod =0;
+    char answer;
+    printf("Quer jogar novamente?(y or n)\n");
+    scanf(" %c",&answer);
+    
+    if(answer == 'n' || answer == 'N'){
+        cod=-3; // codigo para sair
+    }else if(answer == 'y' || answer == 'Y'){
+        cod =-4;// codigo para reiniciar o jogo;
+    }else{
+       cod=-3; // mudar depois esse behavior 
+    }
+    return cod;
 }
