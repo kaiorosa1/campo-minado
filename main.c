@@ -45,7 +45,7 @@ int main(int argc, char* argv[]){
     tGame** game = inicia_tabuleiro(tableSize);
     
     int i=0,j=0;
-    
+    int numeroBombasGame = 0;
     do
     { 
         // lendo cada caractere 
@@ -55,6 +55,7 @@ int main(int argc, char* argv[]){
             j++;
         }else if(c == '1'){
            inicia_position(game,i,j,0,bomba);
+           numeroBombasGame++;
            j++;
            
         }else{
@@ -89,7 +90,7 @@ int main(int argc, char* argv[]){
         
         // Pedir Jogada do Usuario
         // verificar e realizar jogada
-        sair = realizarJogada(game, x, y, tableSize, bomba, vazia, &nJogada);
+        sair = realizarJogada(game, x, y, tableSize, bomba, vazia, &nJogada, numeroBombasGame);
         
         if(sair == -1){
             print_tabuleiro(game,tableSize,fechada);
@@ -98,6 +99,7 @@ int main(int argc, char* argv[]){
             sair = askUser();
         }
         if(sair == -2){
+            print_tabuleiro(game,tableSize,fechada);
             printf("%s Ganhou!\n",nomeJogador);
             sair = askUser();
         }

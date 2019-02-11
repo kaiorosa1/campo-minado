@@ -127,7 +127,7 @@ void conta_bomba_position(tGame **g,int i,int j, int sz, char bomba){
 }
 
 
-int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *jogada){
+int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *jogada,int nBombas){
     
     // verifica validade
     if(!((x >= 0 && x < sz) && (y >= 0 && y < sz))){
@@ -152,7 +152,7 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *j
         }else{
             g[x][y].state  = 1;
         }
-        if(verificaVencedor(g,sz) == 1){
+        if(verificaVencedor(g,sz,nBombas) == 1){
             return -2;
         }
         
@@ -199,14 +199,27 @@ void restartGame(tGame** g, int sz, int* nJogada){
    
 }
 
-int verificaVencedor(tGame** g, int sz){
+int verificaVencedor(tGame** g, int sz, int nBombas){
     // verifica se o jogador ganhou a partida;
-    
     // contar o numero de bombas e subtrair do numero de posicoes disponiveis
     // se o numero de posicoes abertas for igual a esse numero ele ganhou
-    
+    int pDisponiveis = sz*sz;
+    int abertas = 0;
+    int ganhaJogo = pDisponiveis - nBombas;
     // nao precisamos nos preocupar com as bombas pois o jogo termina antes desse ponto 
     // caso tenha uma bomba aberta
+    int i,j;
+    for(i=0;  i < sz; i++){
+        for(j=0; j < sz; j++){
+            if(g[i][j].state == 1){
+               abertas++;
+            }
+        }
+    }
+    
+    if(abertas == ganhaJogo){
+        return 1;
+    }
     return 0;
 }
 
