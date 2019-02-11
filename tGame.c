@@ -139,6 +139,10 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *j
         return -5;
     }
     else{
+        // registra jogada para escrever em um arquivo de saida
+        analisaJogo(g,sz);
+        
+        // analisa natureza das jogada validas
         if(g[x][y].content == vazia){
             floodFillVazias(g, sz,bomba, vazia, x, y);
         }
@@ -151,6 +155,7 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *j
         if(verificaVencedor(g,sz) == 1){
             return -2;
         }
+        
         // aumenta o numero de jogadas pois foi valida
         (*jogada)++;
     }
@@ -163,7 +168,7 @@ void floodFillVazias(tGame** g,  int sz, char bomba, char vazia, int x, int y){
         return;
     }
     if(x < 0 || y < 0){
-        return ;
+        return;
     }
     if(g[x][y].state == 1){
         return;
@@ -203,4 +208,9 @@ int verificaVencedor(tGame** g, int sz){
     // nao precisamos nos preocupar com as bombas pois o jogo termina antes desse ponto 
     // caso tenha uma bomba aberta
     return 0;
+}
+
+void analisaJogo(tGame** g, int sz){
+    // escrever arquivo com as jogadas e o impacto
+    // impacto sao quantas casas foram abertas
 }

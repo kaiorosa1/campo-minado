@@ -35,6 +35,9 @@ void restartGame(tGame** g, int sz, int* nJogada);
 // verifica se o jogador ganhou a partida
 int verificaVencedor(tGame** g, int sz);
 
+// analisa o jogo atual e gera um arquivo com jogadas feitas
+void analisaJogo(tGame** g, int sz);
+
 // desaloca memoria alocada de uma tGame
 void freePosition(tGame* g);
 
