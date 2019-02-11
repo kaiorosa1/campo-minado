@@ -32,6 +32,9 @@ void conta_bomba_position(tGame **g,int i,int j,int sz,char bomba);
 // reinicia o jogo para o estado inicial
 void restartGame(tGame** g, int sz, int* nJogada);
 
+// verifica se o jogador ganhou a partida
+int verificaVencedor(tGame** g, int sz);
+
 // desaloca memoria alocada de uma tGame
 void freePosition(tGame* g);
 

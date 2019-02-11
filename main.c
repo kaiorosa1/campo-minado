@@ -88,13 +88,17 @@ int main(int argc, char* argv[]){
         printf("Digitado(%d %d)\n",x,y);
         
         // Pedir Jogada do Usuario
-        // Analisar jogada
+        // verificar e realizar jogada
         sair = realizarJogada(game, x, y, tableSize, bomba, vazia, &nJogada);
         
         if(sair == -1){
             print_tabuleiro(game,tableSize,fechada);
             printf("%s Perdeu!\n",nomeJogador);
             // as the user if they want to continue playing before ending the game
+            sair = askUser();
+        }
+        if(sair == -2){
+            printf("%s Ganhou!\n",nomeJogador);
             sair = askUser();
         }
         if(sair == -3){
@@ -104,6 +108,7 @@ int main(int argc, char* argv[]){
             // limpar jogo para reiniciar
             restartGame(game,tableSize,&nJogada);
         }
+       
         
     }
     while(1);

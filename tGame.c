@@ -132,11 +132,11 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *j
     // verifica validade
     if(!((x >= 0 && x < sz) && (y >= 0 && y < sz))){
         printf("Posicao invalida (FORA DO TABULEIRO)\n");
-        return -2;
+        return -5;
     }
     else if(g[x][y].state  == 1){
         printf("Posicao invalida (JA ABERTA)!\n");
-        return -2;
+        return -5;
     }
     else{
         if(g[x][y].content == vazia){
@@ -148,7 +148,9 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *j
         }else{
             g[x][y].state  = 1;
         }
-        
+        if(verificaVencedor(g,sz) == 1){
+            return -2;
+        }
         // aumenta o numero de jogadas pois foi valida
         (*jogada)++;
     }
@@ -156,6 +158,7 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *j
 }
 
 void floodFillVazias(tGame** g,  int sz, char bomba, char vazia, int x, int y){
+    // Need some tweaking to be full-fledged functional
     if(x >= sz || y >= sz){
         return;
     }
@@ -165,10 +168,10 @@ void floodFillVazias(tGame** g,  int sz, char bomba, char vazia, int x, int y){
     if(g[x][y].state == 1){
         return;
     }
-    if(g[x][y].content != vazia){
-        return;
+    if(g[x][y].content == bomba || g[x][y].content != vazia){
+         return;
     }
-    
+   
     g[x][y].state = 1;
     
     floodFillVazias(g, sz, bomba, vazia, x + 1, y);
@@ -189,4 +192,15 @@ void restartGame(tGame** g, int sz, int* nJogada){
         }
     }
    
+}
+
+int verificaVencedor(tGame** g, int sz){
+    // verifica se o jogador ganhou a partida;
+    
+    // contar o numero de bombas e subtrair do numero de posicoes disponiveis
+    // se o numero de posicoes abertas for igual a esse numero ele ganhou
+    
+    // nao precisamos nos preocupar com as bombas pois o jogo termina antes desse ponto 
+    // caso tenha uma bomba aberta
+    return 0;
 }
