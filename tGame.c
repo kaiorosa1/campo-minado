@@ -12,9 +12,6 @@ void  inicia_position(tGame** g,int i,int j,int s,int c){
     // it will possibly have a verification step here in the future
     g[i][j].state = s;
     g[i][j].content = c;
-    
-   
-    
 }
 
 
@@ -140,7 +137,9 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *j
     }
     else{
         // registra jogada para escrever em um arquivo de saida
-        analisaJogo(g,sz);
+        if(analisaJogo(g,sz,x,y) ==  -3){
+            return -3;
+        }
         
         // analisa natureza das jogada validas
         if(g[x][y].content == vazia){
@@ -223,7 +222,18 @@ int verificaVencedor(tGame** g, int sz, int nBombas){
     return 0;
 }
 
-void analisaJogo(tGame** g, int sz){
+int analisaJogo(tGame** g, int sz, int x, int y){
     // escrever arquivo com as jogadas e o impacto
     // impacto sao quantas casas foram abertas
+    FILE * fp = fopen("analiseJogo.txt","w");
+    if(fp == NULL){
+        printf("ERRO: Nao foi possível salvar arquivo para analise.\n");
+        return -3;
+    }
+    fclose(fp);
+    return 0;
+}
+
+void freeGame(tGame** g,int sz){
+    // liberar o espaco alocado para a matriz do jogo
 }
