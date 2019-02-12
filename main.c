@@ -75,7 +75,7 @@ int main(int argc, char* argv[]){
     calcularBombas(game,tableSize,bomba);
     //imprimir Estado inicial do tabuleiro 
     int sair = 0,x = 0,y = 0;
-    int nJogada=1;
+    int nJogada=1, nJogo=1;
     
     do{
         // print the entire table
@@ -90,7 +90,7 @@ int main(int argc, char* argv[]){
         
         // Pedir Jogada do Usuario
         // verificar e realizar jogada
-        sair = realizarJogada(game, x, y, tableSize, bomba, vazia, &nJogada, numeroBombasGame);
+        sair = realizarJogada(game, x, y, tableSize, bomba, vazia,nJogo, &nJogada, numeroBombasGame);
         
         if(sair == -1){
             print_tabuleiro(game,tableSize,fechada);
@@ -109,6 +109,7 @@ int main(int argc, char* argv[]){
         if(sair== - 4){
             // limpar jogo para reiniciar
             restartGame(game,tableSize,&nJogada);
+            nJogo++;
         }
        
         

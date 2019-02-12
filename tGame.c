@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "tGame.h"
 
 struct tgame{
@@ -124,7 +125,7 @@ void conta_bomba_position(tGame **g,int i,int j, int sz, char bomba){
 }
 
 
-int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *jogada,int nBombas){
+int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int nJogo, int *jogada,int nBombas){
     
     // verifica validade
     if(!((x >= 0 && x < sz) && (y >= 0 && y < sz))){
@@ -137,9 +138,10 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int *j
     }
     else{
         // registra jogada para escrever em um arquivo de saida
-        if(analisaJogo(g,sz,x,y) ==  -3){
-            return -3;
-        }
+        // inicialmente impacto esta zero mas precisa calcular
+        // if(analisaJogo(g,sz,*jogada,nJogo,x,y,0) ==  -3){
+        //     return -3;
+        // }
         
         // analisa natureza das jogada validas
         if(g[x][y].content == vazia){
@@ -222,15 +224,30 @@ int verificaVencedor(tGame** g, int sz, int nBombas){
     return 0;
 }
 
-int analisaJogo(tGame** g, int sz, int x, int y){
+int analisaJogo(tGame** g,int sz, int nJogo, int nJogada, int x, int y, int impacto){
     // escrever arquivo com as jogadas e o impacto
     // impacto sao quantas casas foram abertas
-    FILE * fp = fopen("analiseJogo.txt","w");
-    if(fp == NULL){
-        printf("ERRO: Nao foi possível salvar arquivo para analise.\n");
-        return -3;
-    }
-    fclose(fp);
+    char* fileName = malloc(1000*sizeof(char));// nome do arquivo
+    char* buff = malloc(100*sizeof(char));
+    
+    // sprintf(buff,"%d",nJogo);
+    
+    // strcat(fileName,"analiseJogo");
+    // strcat(fileName, buff);
+    // strcat(fileName,".txt");
+    
+    // printf("%s\n",fileName);
+    // FILE * fp = fopen(fileName,"a");
+    // if(fp == NULL){
+    //     printf("ERRO: Nao foi possível salvar arquivo para analise.\n");
+    //     return -3;
+    // }
+    // fprintf(fp,"Jogada %d:(%d %d) %d\n",nJogada,x,y,impacto);
+    
+    // fclose(fp);
+    free(fileName);
+    free(buff);
+    
     return 0;
 }
 
