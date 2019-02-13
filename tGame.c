@@ -139,9 +139,10 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int nJ
     else{
         // registra jogada para escrever em um arquivo de saida
         // inicialmente impacto esta zero mas precisa calcular
-        // if(analisaJogo(g,sz,*jogada,nJogo,x,y,0) ==  -3){
-        //     return -3;
-        // }
+        int result = analisaJogo(g,sz,*jogada,nJogo,x,y,0);
+        if(result ==  -3){
+            return -3;
+        }
         
         // analisa natureza das jogada validas
         if(g[x][y].content == vazia){
@@ -229,22 +230,20 @@ int analisaJogo(tGame** g,int sz, int nJogo, int nJogada, int x, int y, int impa
     // impacto sao quantas casas foram abertas
     char* fileName = malloc(1000*sizeof(char));// nome do arquivo
     char* buff = malloc(100*sizeof(char));
+    sprintf(buff,"%d",nJogo);
     
-    // sprintf(buff,"%d",nJogo);
+    strcpy(fileName,"analiseJogo");
+    strcat(fileName, buff);
+    strcat(fileName,".txt");
     
-    // strcat(fileName,"analiseJogo");
-    // strcat(fileName, buff);
-    // strcat(fileName,".txt");
+    FILE * fp = fopen(fileName,"a");
+    if(fp == NULL){
+        printf("ERRO: Nao foi possível salvar arquivo para analise.\n");
+        return -3;
+    }
+    fprintf(fp,"Jogada %d:(%d %d) %d\n",nJogada,x,y,impacto);
     
-    // printf("%s\n",fileName);
-    // FILE * fp = fopen(fileName,"a");
-    // if(fp == NULL){
-    //     printf("ERRO: Nao foi possível salvar arquivo para analise.\n");
-    //     return -3;
-    // }
-    // fprintf(fp,"Jogada %d:(%d %d) %d\n",nJogada,x,y,impacto);
-    
-    // fclose(fp);
+    fclose(fp);
     free(fileName);
     free(buff);
     
