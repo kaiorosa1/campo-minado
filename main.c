@@ -106,7 +106,7 @@ int main(int argc, char* argv[]){
         if(sair == -3){
             break;
         }
-        if(sair== - 4){
+        if(sair== -4){
             // limpar jogo para reiniciar
             restartGame(game,tableSize,&nJogada);
             nJogo++;
