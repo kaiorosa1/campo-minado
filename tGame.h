@@ -36,7 +36,7 @@ void restartGame(tGame** g, int sz, int* nJogada);
 int verificaVencedor(tGame** g, int sz,int nBombas);
 
 // analisa o jogo atual e gera um arquivo com jogadas feitas
-int analisaJogo(tGame** g, int sz,int nJogo, int *nJogada, int x, int y, int impacto);
+void analisaJogo(tGame** g, int sz,int nJogo, int *nJogada, int x, int y, int impacto);
 
 // desaloca memoria alocada de uma tGame
 void freeGame(tGame** g,int sz);

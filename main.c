@@ -94,13 +94,9 @@ int main(int argc, char* argv[]){
         
         // registra jogada para escrever em um arquivo de saida
         // inicialmente impacto esta zero mas precisa calcular
-        int result = analisaJogo(game,tableSize,nJogo, &nJogada,x,y,0);
+        analisaJogo(game,tableSize,nJogo, &nJogada,x,y,0);
         
-        // RETHINK ABOUT THIS IF MESS!!!
-        if(result ==  -3){
-            break;
-        }
-        
+       
         if(sair == -1){
             print_tabuleiro(game,tableSize,fechada);
             printf("%s Perdeu!\n",nomeJogador);
@@ -124,8 +120,6 @@ int main(int argc, char* argv[]){
         
     }
     while(1);
-    
-    
     
     //fechar o arquivo
     fclose(filePointer);

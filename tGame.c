@@ -219,7 +219,7 @@ int verificaVencedor(tGame** g, int sz, int nBombas){
     return 0;
 }
 
-int analisaJogo(tGame** g,int sz, int nJogo, int *nJogada, int x, int y, int impacto){
+void analisaJogo(tGame** g,int sz, int nJogo, int *nJogada, int x, int y, int impacto){
     // escrever arquivo com as jogadas e o impacto
     // impacto sao quantas casas foram abertas
     char* fileName = malloc(1000*sizeof(char));// nome do arquivo
@@ -234,15 +234,13 @@ int analisaJogo(tGame** g,int sz, int nJogo, int *nJogada, int x, int y, int imp
     FILE * fp = fopen(fileName,"a");
     if(fp == NULL){
         printf("ERRO: Nao foi possível salvar arquivo para analise.\n");
-        return -3;
+        return;
     }
     fprintf(fp,"Jogada %d:(%d %d) %d\n",*nJogada,x,y,impacto);
     
     fclose(fp);
     free(fileName);
     free(buff);
-    
-    return 0;
 }
 
 void freeGame(tGame** g,int sz){
