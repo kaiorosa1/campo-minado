@@ -21,7 +21,7 @@ void print_tabuleiro(tGame** g, int sz,int csd);
 void calcularBombas(tGame** g,int sz, char bomba);
 
 // receber jogadas e verificar a validez
-int realizarJogada(tGame** g,int x, int y, int sz, char bomba, char vazia, int nJogo, int *jogada, int nBombas);
+int realizarJogada(tGame** g,int x, int y, int sz, char bomba, char vazia, int *jogada, int nBombas);
 
 // implementa o algoritmo flood fill para abrir as posicoes vazias
 void floodFillVazias(tGame** g, int sz, char bomba, char vazia, int x, int y);
@@ -36,7 +36,7 @@ void restartGame(tGame** g, int sz, int* nJogada);
 int verificaVencedor(tGame** g, int sz,int nBombas);
 
 // analisa o jogo atual e gera um arquivo com jogadas feitas
-int analisaJogo(tGame** g, int sz,int nJogo, int nJogada, int x, int y, int impacto);
+int analisaJogo(tGame** g, int sz,int nJogo, int *nJogada, int x, int y, int impacto);
 
 // desaloca memoria alocada de uma tGame
 void freeGame(tGame** g,int sz);

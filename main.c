@@ -80,7 +80,7 @@ int main(int argc, char* argv[]){
     do{
         // print the entire table
         print_tabuleiro(game,tableSize,fechada);
-        
+        printf("Numero Jogo: %d\n",nJogo);
         printf("%s Jogada: %d\n",nomeJogador,nJogada);
         // recebe jogada
         printf("Digite a posicao (x e y):\n");
@@ -90,7 +90,16 @@ int main(int argc, char* argv[]){
         
         // Pedir Jogada do Usuario
         // verificar e realizar jogada
-        sair = realizarJogada(game, x, y, tableSize, bomba, vazia,nJogo, &nJogada, numeroBombasGame);
+        sair = realizarJogada(game, x, y, tableSize, bomba, vazia, &nJogada, numeroBombasGame);
+        
+        // registra jogada para escrever em um arquivo de saida
+        // inicialmente impacto esta zero mas precisa calcular
+        int result = analisaJogo(game,tableSize,nJogo, &nJogada,x,y,0);
+        
+        // RETHINK ABOUT THIS IF MESS!!!
+        if(result ==  -3){
+            break;
+        }
         
         if(sair == -1){
             print_tabuleiro(game,tableSize,fechada);

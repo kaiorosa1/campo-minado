@@ -125,7 +125,7 @@ void conta_bomba_position(tGame **g,int i,int j, int sz, char bomba){
 }
 
 
-int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int nJogo, int *jogada,int nBombas){
+int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia,int *jogada,int nBombas){
     
     // verifica validade
     if(!((x >= 0 && x < sz) && (y >= 0 && y < sz))){
@@ -137,12 +137,6 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia, int nJ
         return -5;
     }
     else{
-        // registra jogada para escrever em um arquivo de saida
-        // inicialmente impacto esta zero mas precisa calcular
-        int result = analisaJogo(g,sz,*jogada,nJogo,x,y,0);
-        if(result ==  -3){
-            return -3;
-        }
         
         // analisa natureza das jogada validas
         if(g[x][y].content == vazia){
@@ -225,11 +219,12 @@ int verificaVencedor(tGame** g, int sz, int nBombas){
     return 0;
 }
 
-int analisaJogo(tGame** g,int sz, int nJogo, int nJogada, int x, int y, int impacto){
+int analisaJogo(tGame** g,int sz, int nJogo, int *nJogada, int x, int y, int impacto){
     // escrever arquivo com as jogadas e o impacto
     // impacto sao quantas casas foram abertas
     char* fileName = malloc(1000*sizeof(char));// nome do arquivo
     char* buff = malloc(100*sizeof(char));
+    strcpy(buff," ");
     sprintf(buff,"%d",nJogo);
     
     strcpy(fileName,"analiseJogo");
@@ -241,7 +236,7 @@ int analisaJogo(tGame** g,int sz, int nJogo, int nJogada, int x, int y, int impa
         printf("ERRO: Nao foi possível salvar arquivo para analise.\n");
         return -3;
     }
-    fprintf(fp,"Jogada %d:(%d %d) %d\n",nJogada,x,y,impacto);
+    fprintf(fp,"Jogada %d:(%d %d) %d\n",*nJogada,x,y,impacto);
     
     fclose(fp);
     free(fileName);
