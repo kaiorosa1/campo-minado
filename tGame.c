@@ -5,7 +5,8 @@
 
 struct tgame{
     int state; // 0 if closed and 1 if it's already open
-    int content; // vazia ou bomba ou numero de bombas vizinhas 
+    int content; // vazia ou bomba ou numero de bombas vizinhas
+    int neighbor; // numero de bombas
 };
 
 
@@ -13,6 +14,7 @@ void  inicia_position(tGame** g,int i,int j,int s,int c){
     // it will possibly have a verification step here in the future
     g[i][j].state = s;
     g[i][j].content = c;
+    g[i][j].neighbor = 0;
 }
 
 
@@ -29,13 +31,12 @@ void printPosition(tGame** g,int i, int j){
 }
 
 tGame** inicia_tabuleiro(int sz){
-    
-   tGame **tabuleiro = (tGame**) malloc(sz*sizeof(tGame*));
-   // alocar espaco para of ponteiros itself
-   int aux=0;
-   for(aux=0; aux < sz; aux++){
+    tGame **tabuleiro = (tGame**) malloc(sz*sizeof(tGame*));
+    // alocar espaco para of ponteiros itself
+    int aux=0;
+    for(aux=0; aux < sz; aux++){
         tabuleiro[aux] = (tGame*) malloc(sz*sizeof(tGame));
-   }
+    }
     return tabuleiro;
 }
 
@@ -59,7 +60,11 @@ void print_tabuleiro(tGame** g, int sz,int csd){
             if(g[i][j].state == 0){
                 printf(" %c%c%c ",csd,csd,csd);
             }else{
-                printf("  %c  ",g[i][j].content);
+                if(g[i][j].neighbor == 0){
+                    printf("  %c  ",g[i][j].content);
+                }else{
+                     printf("  %d  ",g[i][j].neighbor);
+                }
             }
             
         }
@@ -89,7 +94,7 @@ void conta_bomba_position(tGame **g,int i,int j, int sz, char bomba){
     int back = j - 1;
     
     // conta bomba
-    char conta = '0';
+    int conta = 0;
     
     // verifica as posicoes para nao acessar indices invalidos
     if(up >= 0 && up < sz && g[up][j].content == bomba){
@@ -118,8 +123,8 @@ void conta_bomba_position(tGame **g,int i,int j, int sz, char bomba){
     }
     
     // so coloca no tabuleiro o numero de bombas vizinhas caso tenha bombas vizinhad e nao seja bomba
-    if(g[i][j].content != bomba && conta != '0'){
-        g[i][j].content = conta;
+    if(g[i][j].content != bomba && conta != 0){
+        g[i][j].neighbor = conta;
     }
     
 }
@@ -169,7 +174,7 @@ void floodFillVazias(tGame** g,  int sz, char bomba, char vazia, int x, int y){
     if(g[x][y].state == 1){
         return;
     }
-    if(g[x][y].content == bomba || g[x][y].content != vazia){
+    if(g[x][y].content != vazia){
          return;
     }
    
