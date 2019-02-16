@@ -164,7 +164,7 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia,int *jo
 }
 
 void floodFillVazias(tGame** g,  int sz, char bomba, char vazia, int x, int y){
-    // Need some tweaking to be full-fledged functional
+    // FOCUS NEXT SESSIONS HERE
     if(x >= sz || y >= sz){
         return;
     }
@@ -250,4 +250,10 @@ void analisaJogo(tGame** g,int sz, int nJogo, int *nJogada, int x, int y, int im
 
 void freeGame(tGame** g,int sz){
     // liberar o espaco alocado para a matriz do jogo
+    int i=0;
+    for(i=0; i < sz; i++){
+        free(g[i]);
+    }
+    
+    free(g);
 }

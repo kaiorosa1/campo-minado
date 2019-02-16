@@ -121,6 +121,7 @@ int main(int argc, char* argv[]){
     }
     while(1);
     
+    freeGame(game,tableSize);
     //fechar o arquivo
     fclose(filePointer);
     return 0;
