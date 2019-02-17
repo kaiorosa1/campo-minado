@@ -1,6 +1,6 @@
 # campo-minado
 
-## What it is?
+## What is it?
 
 Campo Minado is a project for a introductory class (Programação II) that I decided to redo from scratch.
 
