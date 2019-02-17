@@ -164,24 +164,19 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia,int *jo
 }
 
 void floodFillVazias(tGame** g,  int sz, char bomba, char vazia, int x, int y){
-    if(isValid(x,y,sz) == 0){
-            
-        if(g[x][y].state == 1){
-            return;
+    int i,j;
+    if(g[x][y].neighbor == 0){
+        //-1, 1, 2 are the number which represent the position itself its left and its right
+        for(i=-1;i<2;i++){
+            for(j=-1;j<2;j++){
+                if((isValid(x+i,y+j,sz) == 0) && (g[x+i][y+j].state == 0)){
+                    g[x+i][y+j].state=1;
+                    floodFillVazias(g,sz,bomba,vazia,x+i,y+j);
+                }
+            }
         }
-        if(g[x][y].content != vazia){
-             return;
-        }
-       
-        g[x][y].state = 1;
-        
-        floodFillVazias(g, sz, bomba, vazia, x + 1, y);
-        floodFillVazias(g, sz, bomba, vazia, x - 1, y);
-        floodFillVazias(g, sz, bomba, vazia, x, y + 1);
-        floodFillVazias(g, sz, bomba, vazia, x, y - 1);
-        
     }
-    
+
 }
 
 void restartGame(tGame** g, int sz, int* nJogada){
