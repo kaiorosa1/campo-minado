@@ -164,26 +164,23 @@ int realizarJogada(tGame** g,int x, int y, int sz, char bomba,char vazia,int *jo
 }
 
 void floodFillVazias(tGame** g,  int sz, char bomba, char vazia, int x, int y){
-    // FOCUS NEXT SESSIONS HERE
-    if(x >= sz || y >= sz){
-        return;
+    if(isValid(x,y,sz) == 0){
+            
+        if(g[x][y].state == 1){
+            return;
+        }
+        if(g[x][y].content != vazia){
+             return;
+        }
+       
+        g[x][y].state = 1;
+        
+        floodFillVazias(g, sz, bomba, vazia, x + 1, y);
+        floodFillVazias(g, sz, bomba, vazia, x - 1, y);
+        floodFillVazias(g, sz, bomba, vazia, x, y + 1);
+        floodFillVazias(g, sz, bomba, vazia, x, y - 1);
+        
     }
-    if(x < 0 || y < 0){
-        return;
-    }
-    if(g[x][y].state == 1){
-        return;
-    }
-    if(g[x][y].content != vazia){
-         return;
-    }
-   
-    g[x][y].state = 1;
-    
-    floodFillVazias(g, sz, bomba, vazia, x + 1, y);
-    floodFillVazias(g, sz, bomba, vazia, x - 1, y);
-    floodFillVazias(g, sz, bomba, vazia, x, y + 1);
-    floodFillVazias(g, sz, bomba, vazia, x, y - 1);
     
 }
 
@@ -248,6 +245,15 @@ void analisaJogo(tGame** g,int sz, int nJogo, int *nJogada, int x, int y, int im
     free(buff);
 }
 
+int isValid(int x, int y,int sz){
+    if(x >= sz || y >= sz){
+        return 1;
+    }
+    if(x < 0 || y < 0){
+        return 1;
+    }
+    return 0;
+}
 void freeGame(tGame** g,int sz){
     // liberar o espaco alocado para a matriz do jogo
     int i=0;
@@ -257,3 +263,4 @@ void freeGame(tGame** g,int sz){
     
     free(g);
 }
+

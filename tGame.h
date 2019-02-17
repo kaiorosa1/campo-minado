@@ -23,6 +23,9 @@ void calcularBombas(tGame** g,int sz, char bomba);
 // receber jogadas e verificar a validez
 int realizarJogada(tGame** g,int x, int y, int sz, char bomba, char vazia, int *jogada, int nBombas);
 
+// verify the validity of the x and y given
+int isValid(int x, int y,int sz);
+
 // implementa o algoritmo flood fill para abrir as posicoes vazias
 void floodFillVazias(tGame** g, int sz, char bomba, char vazia, int x, int y);
 
